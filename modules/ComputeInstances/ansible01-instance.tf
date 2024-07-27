@@ -32,20 +32,20 @@ resource "google_compute_instance" "ansible_instance_01" {
     ssh-keys = ""
   }
 
-  # provisioner "remote-exec" {
-  #   connection {
-  #     type        = "ssh"
-  #     user        = "${var.ssh_user}"
-  #     private_key = file(var.private_key_path)
-  #     host        = self.network_interface[0].access_config[0].nat_ip
-  #     timeout     = "1m"
-  #   }
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "${var.ssh_user}"
+      private_key = "${file(var.private_key_path)}"
+      host        = self.network_interface[0].access_config[0].nat_ip
+      timeout     = "1m"
+    }
 
-  #   inline = [
-  #     "echo Hello, World!",
-  #     "sudo apt-get update",
-  #     "sudo apt-add-repository ppa:ansible/ansible -y",
-  #     "sudo apt-get install -y ansible"
-  #   ]
-  # }
+    inline = [
+      "echo Hello, World!",
+      "sudo apt-get update",
+      "sudo apt-add-repository ppa:ansible/ansible -y",
+      "sudo apt-get install -y ansible"
+    ]
+  }
 }

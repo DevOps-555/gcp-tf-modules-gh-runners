@@ -179,4 +179,14 @@ You can click the Preview link to take a look at your changes.
 - 🌱 I’m currently learning ...
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
+
+
+rsweety751@gh-runners02:~/actions-runner$ sudo ./svc.sh install
+Creating launch runner in /etc/systemd/system/actions.runner.DevOps-555-gcp-tf-modules-gh-action.gh-runner.service
+Run as user: rsweety751
+Run as uid: 1001
+gid: 1002
+Created symlink /etc/systemd/system/multi-user.target.wants/actions.runner.DevOps-555-gcp-tf-modules-gh-action.gh-runner.service → /etc/systemd/system/actions.runner.DevOps-555-gcp-tf-modules-gh-action.gh-runner.service.
+
+
 --->
