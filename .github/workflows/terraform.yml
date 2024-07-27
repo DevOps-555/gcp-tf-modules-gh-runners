@@ -11,7 +11,7 @@ jobs:
   terraform_workspace:
     name: 'POC TF Automation'
     # runs-on: [self-hosted, Linux , X64]
-    runs-on: [self-hosted, gh-runner, ubuntu-latest]
+    runs-on: gh-runner
     environment: dev
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
