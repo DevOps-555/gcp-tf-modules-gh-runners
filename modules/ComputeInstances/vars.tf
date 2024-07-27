@@ -12,7 +12,7 @@ variable "image" {
 variable "private_key_path" {
   type    = string
   description = "SSH key from github actions"
-  # default = ".ssh/id_rsa"
+  default = ".ssh/id_rsa"
 }
 
 variable "ssh_user" {
