@@ -22,9 +22,8 @@ resource "google_compute_instance" "gh_runners_01" {
 
   network_interface {
     network = "default"
-    network_ip = "10.128.0.21"
+    network_ip = ""
     access_config {
-      nat_ip = "35.238.24.112"
     }
   }
 

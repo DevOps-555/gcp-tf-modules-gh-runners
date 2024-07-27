@@ -22,8 +22,9 @@ resource "google_compute_instance" "ansible_instance_01" {
 
   network_interface {
     network = "default"
-    network_ip = ""
+    network_ip = "10.128.0.21"
     access_config {
+      nat_ip = "35.238.24.112"
     }
   }
 

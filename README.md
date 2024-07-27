@@ -105,16 +105,23 @@ gcloud auth application-default login
 
 # To check list of Ubuntu images supported
 gcloud compute images list | grep ubuntu
+
+# allow authentications from the Workload Identity Provider to impersonate the desired Service Account:
+
+gcloud iam service-accounts add-iam-policy-binding "github-wif@container-kafka-2023.iam.gserviceaccount.com" \
+  --project="container-kafka-2023" \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/projects/706353281258/locations/global/workloadIdentityPools/github-actions-pool/attribute.repository/DevOps-555/gcp-tf-modules-gh-action"
 ```
 
 ### Terraform execution commands: 
 
 ```sh
 terraform init -backend-config ../env/gcs-backend-state.tf -input=false
-terraform plan -var-file ../env/poc.tfvars -input=false -lock=false -refresh=true
-terraform refresh -var-file ../env/poc.tfvars -input=false -lock=false -refresh=true
-terraform apply -var-file ../env/poc.tfvars -input=false -lock=false -refresh=true --auto-approve
-terraform destory -var-file ../env/poc.tfvars -input=false -lock=false -refresh=true
+terraform plan -var-file ../env/gcp.tfvars -input=false -lock=false -refresh=true
+terraform refresh -var-file ../env/gcp.tfvars -input=false -lock=false -refresh=true
+terraform apply -var-file ../env/gcp.tfvars -input=false -lock=false -refresh=true --auto-approve
+terraform destory -var-file ../env/gcp.tfvars -input=false -lock=false -refresh=true
 ```
 
 ### Terraform File Structure 🧐 :
@@ -122,8 +129,8 @@ terraform destory -var-file ../env/poc.tfvars -input=false -lock=false -refresh=
 - Folder env consist of Varibales and State Bucket  _  📁 _:
 ```
  env/📂 
- └── poc_gcp.state.tf
- └── poc.tfvars
+ └── gcp_gcp.state.tf
+ └── gcp.tfvars
 ```
 
 - Folder gcp consists of main file which as all the modules referring to each of the resource  _  📁 _:
